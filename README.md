@@ -1,1 +1,1 @@
-## Track manie leaderboard app for facts
+## Track mania leaderboard app for facts
