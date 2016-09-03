@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import {Players} from '../../imports/model/player';
 import Leaderboard from './leaderboard/Leaderboard';
 import Navigation from './navigation/Navigation';
+import AddScore from './addScore/AddScore';
 
 class App extends Component {
     render(){
@@ -13,13 +14,14 @@ class App extends Component {
                 <div className="container">
                     <Leaderboard players={this.props.players}/>
                 </div>
+                <AddScore/>
             </div>
         )
     }
 }
 
 App.propTypes = {
-    Players: PropTypes.array.isRequired,
+    players: PropTypes.array.isRequired,
 };
 
 export default createContainer(() => {
