@@ -8,14 +8,14 @@ export default class PlayerScore extends Component{
             return (
                 <div className="card-panel position first-position">
                     #{this.props.position} {this.props.player.name}
-                    <span className="right">{this.props.player.time}</span>
+                    <span className="badge blue">{this.props.player.time}</span>
                 </div>
             )
         }
         return(
             <div className="card-panel position">
                 #{this.props.position} {this.props.player.name}
-                <span className="right">{this.props.player.time}</span>
+                <span className="badge blue">{this.props.player.time}</span>
             </div>
 
         );
