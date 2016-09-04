@@ -3,6 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import PlayerScore from '../playerScore/PlayerScore';
 import {Players} from '../../../imports/model/player';
+import FlipMove from 'react-flip-move';
 
 class Leaderboard extends Component{
 
@@ -14,7 +15,9 @@ class Leaderboard extends Component{
     render(){
         return (
             <div className="leaderboard">
-                {this.renderPlayerScores()}
+                <FlipMove enterAnimation="elevator" leaveAnimation="elevator">
+                    {this.renderPlayerScores()}
+                </FlipMove>
             </div>
         )
     }
