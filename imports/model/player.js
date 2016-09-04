@@ -22,7 +22,7 @@ validEmail = Match.Where(function (email) {
 });
 validTimeStamp = Match.Where(function (timeStamp) {
     check(timeStamp, String);
-    let regexp = /([0-9]{2}:[0-9]{2})/g;
+    let regexp = /([0-9]{2}:[0-9]{2}\.[0-9]{3})/g;
     return regexp.test(timeStamp);
 });
 

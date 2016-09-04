@@ -14,7 +14,7 @@ export default class AddScore extends Component{
     }
     componentDidMount(){
         $('#time').formatter({
-            'pattern': '{{99}}:{{99}}',
+            'pattern': '{{99}}:{{99}}.{{999}}',
             'persistent': true
         });
     }
