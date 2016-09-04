@@ -4,13 +4,21 @@ import React, { Component, PropTypes } from 'react';
 
 export default class PlayerScore extends Component{
     render(){
-        return (
-            <tr>
-                <td>{this.props.position}</td>
-                <td>{this.props.player.name}</td>
-                <td>{this.props.player.time}</td>
-            </tr>
-        )
+        if(this.props.position == 1){
+            return (
+                <div className="card-panel position first-position">
+                    #{this.props.position} {this.props.player.name}
+                    <span className="right">{this.props.player.time}</span>
+                </div>
+            )
+        }
+        return(
+            <div className="card-panel position">
+                #{this.props.position} {this.props.player.name}
+                <span className="right">{this.props.player.time}</span>
+            </div>
+
+        );
     }
 }
 

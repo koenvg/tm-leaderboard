@@ -13,18 +13,9 @@ class Leaderboard extends Component{
     }
     render(){
         return (
-            <table className="striped">
-                <thead>
-                    <tr>
-                        <th >#</th>
-                        <th >Name</th>
-                        <th >Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderPlayerScores()}
-                </tbody>
-            </table>
+            <div className="leaderboard">
+                {this.renderPlayerScores()}
+            </div>
         )
     }
 }
