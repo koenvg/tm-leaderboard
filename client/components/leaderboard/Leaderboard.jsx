@@ -13,7 +13,7 @@ class Leaderboard extends Component{
     }
     render(){
         return (
-            <table>
+            <table className="striped">
                 <thead>
                     <tr>
                         <th >#</th>
@@ -36,6 +36,6 @@ Leaderboard.propTypes = {
 export default leaderBoardContainer = createContainer(() => {
     Meteor.subscribe('players');
     return {
-        players: Players.find({}).fetch()
+        players: Players.find({}, {sort: {time:1}}).fetch()
     };
 }, Leaderboard);

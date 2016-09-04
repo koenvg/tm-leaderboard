@@ -8,7 +8,10 @@ export const Players = new Mongo.Collection('players');
 if (Meteor.isServer) {
     // This code only runs on the server
     Meteor.publish('players', function tasksPublication() {
-        return Players.find();
+        return Players.find({}, {
+            sort: {time:1},
+            limit: 10
+        });
     });
 }
 

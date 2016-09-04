@@ -16,7 +16,7 @@ export default class AddScore extends Component{
         const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
         const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
         const time = ReactDOM.findDOMNode(this.refs.time).value.trim();
-console.log(time);
+
         Meteor.call('players.insert', name, email, time);
 
         // Clear form
