@@ -55,21 +55,21 @@ export default class AddScore extends Component{
                         <form className="col s12" onSubmit={this.handleSubmit.bind(this)}>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <i className="material-icons prefix">mode_edit</i>
+                                    <i className="material-icons prefix">perm_identity</i>
                                     <input id="name" type="text" className="validate" ref="name" required="required"/>
                                     <label htmlFor="name">Name</label>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <i className="material-icons prefix">account_circle</i>
+                                    <i className="material-icons prefix">email</i>
                                     <input id="email" type="email" className="validate" ref="email" required="required"/>
                                     <label htmlFor="email">Email</label>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <i className="material-icons prefix">mode_edit</i>
+                                    <i className="material-icons prefix">av_timer</i>
                                     <input id="time" type="text" className="validate" ref="time"/>
                                     <label htmlFor="time">Time</label>
                                 </div>
