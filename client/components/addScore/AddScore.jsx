@@ -5,6 +5,13 @@ import { jQuery } from 'jQuery';
 import  '../../../public/lib/formatter';
 
 export default class AddScore extends Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            formError: false
+        };
+    }
     componentDidMount(){
         $('#time').formatter({
             'pattern': '{{99}}:{{99}}',
@@ -17,13 +24,22 @@ export default class AddScore extends Component{
         const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
         const time = ReactDOM.findDOMNode(this.refs.time).value.trim();
 
-        Meteor.call('players.insert', name, email, time);
-
-        // Clear form
-        ReactDOM.findDOMNode(this.refs.name).value = '';
-        ReactDOM.findDOMNode(this.refs.email).value = '';
-        ReactDOM.findDOMNode(this.refs.time).value = '';
-        $('#addScore').closeModal();
+        Meteor.call('players.insert', name, email, time, (error) =>{
+            if (error) {
+                this.setState({
+                    formError: true,
+                });
+                Materialize.toast('An error occurred while submitting the form, please check if your data is correct.', 4000)
+            }else{
+                ReactDOM.findDOMNode(this.refs.name).value = '';
+                ReactDOM.findDOMNode(this.refs.email).value = '';
+                ReactDOM.findDOMNode(this.refs.time).value = '';
+                this.setState({
+                    formError: false,
+                });
+                $('#addScore').closeModal();
+            }
+        })
     }
     render(){
         return (
@@ -31,6 +47,11 @@ export default class AddScore extends Component{
             <div id="addScore" className="modal bottom-sheet">
                 <div className="modal-content">
                     <div className="row">
+                        { this.state.formError ?
+                            <div className="card-panel red lighten-2 error-message">
+                                An error occurred while submitting the form, please check if your data is correct.
+                            </div> : ''
+                        }
                         <form className="col s12" onSubmit={this.handleSubmit.bind(this)}>
                             <div className="row">
                                 <div className="input-field col s12">
