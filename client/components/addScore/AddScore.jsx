@@ -1,10 +1,20 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 export default class AddScore extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        alert('Banaan');
+        const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
+        const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+
+        Meteor.call('players.insert', name, email, '1:01');
+
+        // Clear form
+        ReactDOM.findDOMNode(this.refs.name).value = '';
+        ReactDOM.findDOMNode(this.refs.email).value = '';
+        $('#addScore').closeModal();
     }
     render(){
         return (

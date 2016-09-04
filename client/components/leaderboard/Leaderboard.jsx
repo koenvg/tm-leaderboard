@@ -1,7 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
+import PlayerScore from '../playerScore/PlayerScore';
+import {Players} from '../../../imports/model/player';
 
-export default class Leaderboard extends Component{
+class Leaderboard extends Component{
+    renderPlayerScores(){
+        return this.props.players.map((player,i) => (
+            <PlayerScore position={i+1} player={player} />
+        ));
+    }
     render(){
         return (
             <table>
@@ -13,21 +21,7 @@ export default class Leaderboard extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>$0.87</td>
-                    </tr>
-                    <tr>
-                        <td>Alan</td>
-                        <td>Jellybean</td>
-                        <td>$3.76</td>
-                    </tr>
-                    <tr>
-                        <td>Jonathan</td>
-                        <td>Lollipop</td>
-                        <td>$7.00</td>
-                    </tr>
+                    {this.renderPlayerScores()}
                 </tbody>
             </table>
         )
@@ -37,3 +31,10 @@ export default class Leaderboard extends Component{
 Leaderboard.propTypes = {
     players: PropTypes.array.isRequired,
 };
+
+export default leaderBoardContainer = createContainer(() => {
+    Meteor.subscribe('players');
+    return {
+        players: Players.find({}).fetch()
+    };
+}, Leaderboard);
