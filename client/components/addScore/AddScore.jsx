@@ -1,19 +1,28 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import { jQuery } from 'jQuery';
+import  '../../../public/lib/formatter';
 
 export default class AddScore extends Component{
-
+    componentDidMount(){
+        $('#time').formatter({
+            'pattern': '{{99}}:{{99}}',
+            'persistent': true
+        });
+    }
     handleSubmit(event){
         event.preventDefault();
         const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
         const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
-
-        Meteor.call('players.insert', name, email, '1:01');
+        const time = ReactDOM.findDOMNode(this.refs.time).value.trim();
+console.log(time);
+        Meteor.call('players.insert', name, email, time);
 
         // Clear form
         ReactDOM.findDOMNode(this.refs.name).value = '';
         ReactDOM.findDOMNode(this.refs.email).value = '';
+        ReactDOM.findDOMNode(this.refs.time).value = '';
         $('#addScore').closeModal();
     }
     render(){
@@ -26,15 +35,22 @@ export default class AddScore extends Component{
                             <div className="row">
                                 <div className="input-field col s12">
                                     <i className="material-icons prefix">mode_edit</i>
-                                    <input id="name" type="text" className="validate" ref="name"/>
+                                    <input id="name" type="text" className="validate" ref="name" required="required"/>
                                     <label htmlFor="name">Name</label>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
                                     <i className="material-icons prefix">account_circle</i>
-                                    <input id="email" type="email" className="validate" ref="email"/>
+                                    <input id="email" type="email" className="validate" ref="email" required="required"/>
                                     <label htmlFor="email">Email</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <i className="material-icons prefix">mode_edit</i>
+                                    <input id="time" type="text" className="validate" ref="time"/>
+                                    <label htmlFor="time">Time</label>
                                 </div>
                             </div>
                             <button type="submit" className="btn">Add</button>

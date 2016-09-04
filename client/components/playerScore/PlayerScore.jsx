@@ -8,6 +8,7 @@ export default class PlayerScore extends Component{
             <tr>
                 <td>{this.props.position}</td>
                 <td>{this.props.player.name}</td>
+                <td>{this.props.player.time}</td>
             </tr>
         )
     }

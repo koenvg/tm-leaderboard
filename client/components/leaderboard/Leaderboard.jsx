@@ -5,9 +5,10 @@ import PlayerScore from '../playerScore/PlayerScore';
 import {Players} from '../../../imports/model/player';
 
 class Leaderboard extends Component{
+
     renderPlayerScores(){
         return this.props.players.map((player,i) => (
-            <PlayerScore position={i+1} player={player} />
+            <PlayerScore key={player._id} position={i+1} player={player} />
         ));
     }
     render(){
