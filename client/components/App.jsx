@@ -1,22 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React from 'react';
+import { Navigation } from './navigation/Navigation';
 
-
-import Leaderboard from './leaderboard/Leaderboard';
-import Navigation from './navigation/Navigation';
-import AddScore from './addScore/AddScore';
-
-export default class App extends Component {
-    render(){
-        return(
-            <div>
-                <Navigation/>
-                <div className="container">
-                    <Leaderboard />
-                </div>
-                <AddScore/>
+export const AppLayout = ({content}) => (
+    <div>
+        <main>
+            <Navigation/>
+            <div className="container">
+                {content}
             </div>
-        )
-    }
-}
+
+        </main>
+    </div>
+);
 

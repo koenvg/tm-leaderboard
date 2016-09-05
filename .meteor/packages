@@ -21,3 +21,4 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 fourseven:scss
 react-meteor-data
 materialize:materialize@=0.97.6
+kadira:flow-router

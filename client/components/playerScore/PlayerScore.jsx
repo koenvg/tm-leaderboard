@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-
-
-export default class PlayerScore extends Component{
+export class PlayerScore extends Component{
     render(){
         if(this.props.position == 1){
             return (
