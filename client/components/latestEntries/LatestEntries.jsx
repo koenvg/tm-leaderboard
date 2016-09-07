@@ -1,35 +1,40 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
-import { PlayerScore } from '../playerScore/PlayerScore';
 import { Players } from '../../../imports/model/player';
-import FlipMove from 'react-flip-move';
-
-class Leaderboard extends Component{
+import { PlayerScore } from '../playerScore/PlayerScore';
+class LatestEntries extends Component{
 
     renderPlayerScores(){
+        console.log(this.props.players);
         return this.props.players.map((player,i) => (
             <PlayerScore key={player._id} player={player} />
         ));
     }
+
     render(){
         return (
             <div className="leaderboard">
-                <FlipMove enterAnimation="elevator" leaveAnimation="elevator">
+                <h1> Latest entries</h1>
                     {this.renderPlayerScores()}
-                </FlipMove>
             </div>
         )
     }
 }
 
-Leaderboard.propTypes = {
+LatestEntries.propTypes = {
     players: PropTypes.array.isRequired,
 };
 
-export const LeaderBoardContainer = createContainer(() => {
-    Meteor.subscribe('leaderboard');
+export const LatestEntriesContainer = createContainer(() => {
+    let size = 5;
+    Meteor.subscribe('latestEntries', size);
     return {
-        players: Players.find({}, {sort: {time:1}, limit: 10}).fetch()
+        players: Players.find({}, {
+            sort: {createdAt: -1},
+            limit: size
+        }).fetch()
     };
-}, Leaderboard);
+
+}, LatestEntries);

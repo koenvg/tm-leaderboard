@@ -7,12 +7,20 @@ export const Players = new Mongo.Collection('players');
 
 if (Meteor.isServer) {
     // This code only runs on the server
-    Meteor.publish('players', function tasksPublication() {
+    Meteor.publish('leaderboard', function tasksPublication() {
         return Players.find({}, {
             sort: {time:1},
             limit: 10
         });
     });
+    Meteor.publish('latestEntries', function publication(size) {
+        check(size, Number);
+        return Players.find({}, {
+            sort: {createdAt: -1},
+            limit: size
+        });
+    });
+
 }
 
 validEmail = Match.Where(function (email) {
@@ -40,4 +48,9 @@ Meteor.methods({
             createdAt: new Date(),
         });
     },
+    'player.position'(time){
+        check(time, validTimeStamp);
+        return Players.find({time: { $lte: time}}).count();
+
+    }
 });
