@@ -9,31 +9,14 @@ export class PlayerScore extends Component{
         };
     }
     componentWillReceiveProps(props){
-        console.log('received props:');
-        console.log(props);
-        Meteor.call('player.position', props.player.time, function(error, position){
-            if(this._mounted){
-                if(error){
-                }else{
-                    this.setState({
-                        position: position
-                    })
-                }
-            }
-        }.bind(this));
+        let self = this;
+        updateScore(self, props.player.time);
     }
     componentDidMount(){
         this._mounted = true;
-        Meteor.call('player.position', this.props.player.time, function(error, position){
-            if(this._mounted){
-                if(error){
-                }else{
-                    this.setState({
-                        position: position
-                    })
-                }
-            }
-        }.bind(this));
+        let self = this;
+        updateScore(self, this.props.player.time);
+
     }
     componentWillUnmount() {
         this._mounted = false;
@@ -60,3 +43,16 @@ export class PlayerScore extends Component{
 PlayerScore.propTypes ={
     player: PropTypes.object.isRequired
 };
+
+function updateScore(self, time){
+    Meteor.call('player.position', time, function(error, position){
+        if(this._mounted){
+            if(error){
+            }else{
+                self.setState({
+                    position: position
+                })
+            }
+        }
+    }.bind(self));
+}

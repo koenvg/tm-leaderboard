@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 
 import { Players } from '../../../imports/model/player';
 import { PlayerScore } from '../playerScore/PlayerScore';
+import FlipMove from 'react-flip-move';
+
 class LatestEntries extends Component{
 
     renderPlayerScores(){
@@ -17,7 +19,9 @@ class LatestEntries extends Component{
         return (
             <div className="leaderboard">
                 <h1> Latest entries</h1>
+                <FlipMove enterAnimation="elevator" leaveAnimation="elevator">
                     {this.renderPlayerScores()}
+                </FlipMove>
             </div>
         )
     }
