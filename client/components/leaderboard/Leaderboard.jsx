@@ -9,7 +9,7 @@ class Leaderboard extends Component{
 
     renderPlayerScores(){
         return this.props.players.map((player,i) => (
-            <PlayerScore key={player._id} player={player} />
+            <PlayerScore key={player._id} position={i+1} player={player} />
         ));
     }
     render(){

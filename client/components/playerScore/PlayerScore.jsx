@@ -8,6 +8,20 @@ export class PlayerScore extends Component{
             position: 'Calculating...'
         };
     }
+    componentWillReceiveProps(props){
+        console.log('received props:');
+        console.log(props);
+        Meteor.call('player.position', props.player.time, function(error, position){
+            if(this._mounted){
+                if(error){
+                }else{
+                    this.setState({
+                        position: position
+                    })
+                }
+            }
+        }.bind(this));
+    }
     componentDidMount(){
         this._mounted = true;
         Meteor.call('player.position', this.props.player.time, function(error, position){
