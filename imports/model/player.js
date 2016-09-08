@@ -51,6 +51,19 @@ Meteor.methods({
     'player.position'(time){
         check(time, validTimeStamp);
         return Players.find({time: { $lte: time}}).count();
+    },
+    'players.search'(query){
+        check(query, String);
+        if(query === ''){
+            return Players.find({}, {
+                sort: {createdAt: -1},
+                limit: 10
+            }).fetch();
+        }
+        query = '.*' + query + '.*';
+        return Players.find({
+            "name": {$regex: query}
+        }, {limit: 10}).fetch();
 
     }
 });
