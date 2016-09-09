@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { PlayerScore } from '../playerScore/PlayerScore';
+import { PlayerSearchResult } from '../playerSearchResult/PlayerSearchResult';
 
 export class SearchPlayers extends Component{
     constructor(props) {
@@ -7,8 +7,7 @@ export class SearchPlayers extends Component{
 
         this.state = {
             players: []
-        }
-        this.search = this.search.bind(this);
+        };
     }
     search(event){
         let self = this;
@@ -25,15 +24,32 @@ export class SearchPlayers extends Component{
     }
     renderResults(){
         return this.state.players.map((player,i) => (
-            <PlayerScore key={player._id} position={i+1} player={player} />
+            <PlayerSearchResult key={player._id} player={player} />
         ));
     }
     render(){
         return (
             <div className="leaderboard">
-                <input type="text" ref="query" onKeyUp={this.search}/>
+                <div className="row">
+                    <div className="input-field col s12">
+                        <input id="name" type="text" className="validate" ref="name" onKeyUp={this.search.bind(this)}/>
+                        <label htmlFor="name">Search query</label>
+                    </div>
+                </div>
                 <h4>Results</h4>
-                {this.renderResults()}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderResults()}
+                    </tbody>
+
+                </table>
             </div>
         )
     }

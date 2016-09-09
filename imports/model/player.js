@@ -64,6 +64,10 @@ Meteor.methods({
         return Players.find({
             "name": {$regex: query}
         }, {limit: 10}).fetch();
-
+    },
+    'player.get'(id){
+        check(id, String);
+        console.log(id);
+        return Players.findOne(id);
     }
 });
