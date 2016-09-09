@@ -25,14 +25,14 @@ export class PlayerScore extends Component{
         if(this.props.position == 1){
             return (
                 <div className="card-panel position first-position">
-                    #{this.state.position} {this.props.player.name}
+                    <span className="score">{this.state.position}</span> {this.props.player.name}
                     <span className="badge blue">{this.props.player.time}</span>
                 </div>
             )
         }
         return(
             <div className="card-panel position">
-                #{this.state.position} {this.props.player.name}
+                <span className="score">{this.state.position}</span> {this.props.player.name}
                 <span className="badge blue">{this.props.player.time}</span>
             </div>
 
