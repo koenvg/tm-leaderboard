@@ -19,34 +19,42 @@ export class EditPlayer extends Component{
 
             }else{
                 console.log(player);
+
+                this.setState({
+                    player: player
+                });
+                ReactDOM.findDOMNode(this.refs.name).value = player.name;
+                ReactDOM.findDOMNode(this.refs.email).value = player.email;
+                ReactDOM.findDOMNode(this.refs.time).value = player.time;
+                Materialize.updateTextFields();
             }
         }.bind(this));
     }
     handleSubmit(event){
         event.preventDefault();
-        const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
-        const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
-        const time = ReactDOM.findDOMNode(this.refs.time).value.trim();
+        let player = this.state.player;
+        player.name = ReactDOM.findDOMNode(this.refs.name).value.trim();
+        player.email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+        player.time = ReactDOM.findDOMNode(this.refs.time).value.trim();
 
-        Meteor.call('players.insert', name, email, time, (error) =>{
+        Meteor.call('player.update', player, (error) =>{
             if (error) {
                 this.setState({
                     formError: true,
                 });
-                Materialize.toast('An error occurred while submitting the form, please check if your data is correct.', 4000)
+                Materialize.toast('An error occurred while submitting the form, please check if your data is correct.', 4000);
             }else{
-                ReactDOM.findDOMNode(this.refs.name).value = '';
-                ReactDOM.findDOMNode(this.refs.email).value = '';
-                ReactDOM.findDOMNode(this.refs.time).value = '';
                 this.setState({
                     formError: false,
                 });
+                Materialize.toast('All changes are saved', 4000);
             }
         })
     }
     render(){
         return (
             <div className="row">
+                <h3>Edit player {this.state.player.name}</h3>
                 { this.state.formError ?
                     <div className="card-panel red lighten-2 error-message">
                         An error occurred while submitting the form, please check if your data is correct.
@@ -56,7 +64,7 @@ export class EditPlayer extends Component{
                     <div className="row">
                         <div className="input-field col s12">
                             <i className="material-icons prefix">perm_identity</i>
-                            <input id="name" type="text" className="validate" ref="name" required="required" defaultValue='banaan'/>
+                            <input id="name" type="text" className="validate" ref="name" required="required"/>
                             <label htmlFor="name">Name</label>
                         </div>
                     </div>

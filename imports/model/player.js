@@ -48,6 +48,18 @@ Meteor.methods({
             createdAt: new Date(),
         });
     },
+    'player.update'(player){
+        check(player.email, validEmail);
+        check(player.time, validTimeStamp);
+        Players.update(player._id,{
+            $set: {
+                    name: player.name,
+                    email: player.email,
+                    time: player.time
+                }
+            }
+        );
+    },
     'player.position'(time){
         check(time, validTimeStamp);
         return Players.find({time: { $lte: time}}).count();
@@ -67,7 +79,6 @@ Meteor.methods({
     },
     'player.get'(id){
         check(id, String);
-        console.log(id);
         return Players.findOne(id);
     }
 });
