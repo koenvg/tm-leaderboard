@@ -1,6 +1,9 @@
 
-@import "../app";
 .leaderboard{
+  li{
+    font-size: 1.2em;
+    border-top: 1px solid color("grey", "lighten-2");
+  }
   .position{
     margin: 1rem 0 1rem 1rem;
     position: relative;
@@ -13,7 +16,6 @@
     margin: 0.5rem 0 1rem 0;
   }
   .score{
-    background-color: $accent-color;
     padding: 15px;
   }
 }

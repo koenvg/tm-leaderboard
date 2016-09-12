@@ -1,7 +1,10 @@
+@import "../vendor/materialize/sass/materialize";
+
 $accent-color: #f44336;
 
-
 @import "addPlayer/addPlayer";
+@import "leaderboard/leaderboard";
+@import "playerScore/playerScore";
 /*
 body{
   background-size: 100% 100%;

@@ -22,19 +22,14 @@ export class PlayerScore extends Component{
         this._mounted = false;
     }
     render(){
-        if(this.props.position == 1){
-            return (
-                <div className="card-panel position first-position">
-                    <span className="score">{this.state.position}</span> {this.props.player.name}
+
+        return(
+            <li>
+                <div className="position ">
+                    {this.state.position}. {this.props.player.name}
                     <span className="badge blue">{this.props.player.time}</span>
                 </div>
-            )
-        }
-        return(
-            <div className="card-panel position">
-                <span className="score">{this.state.position}</span> {this.props.player.name}
-                <span className="badge blue">{this.props.player.time}</span>
-            </div>
+            </li>
 
         );
     }
