@@ -5,12 +5,12 @@ $accent-color: #f44336;
 @import "addPlayer/addPlayer";
 @import "leaderboard/leaderboard";
 @import "playerScore/playerScore";
-/*
+
 body{
   background-size: 100% 100%;
   background: url('/images/track-mania.jpg') no-repeat;
 }
-*/
+
 
 .header{
   color: $accent-color;
