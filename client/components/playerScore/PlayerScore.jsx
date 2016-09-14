@@ -25,9 +25,10 @@ export class PlayerScore extends Component{
 
         return(
             <li>
-                <div className="position ">
-                    {this.state.position}. {this.props.player.name}
-                    <span className="badge blue">{this.props.player.time}</span>
+                <div className="player">
+                    <span className="score">{this.state.position}</span>
+                    {this.props.player.name}
+                    <span className="badge red">{this.props.player.time}</span>
                 </div>
             </li>
 
@@ -44,6 +45,9 @@ function updateScore(self, time){
         if(this._mounted){
             if(error){
             }else{
+                if(position < 10){
+                    position = '0' + position;
+                }
                 self.setState({
                     position: position
                 })
