@@ -22,7 +22,7 @@ body{
   padding: 1em;
   @extend .z-depth-5;
   .white{
-      background-color: color('grey', 'lighten-5');
+      @extend .grey, .lighten-4;
   }
 }
 
