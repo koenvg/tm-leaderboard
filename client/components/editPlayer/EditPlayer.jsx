@@ -53,8 +53,8 @@ export class EditPlayer extends Component{
     }
     render(){
         return (
-            <div className="row">
-                <h3>Edit player {this.state.player.name}</h3>
+            <div className="row wrapper white">
+                <h3 className="header center">Edit player {this.state.player.name}</h3>
                 { this.state.formError ?
                     <div className="card-panel red lighten-2 error-message">
                         An error occurred while submitting the form, please check if your data is correct.

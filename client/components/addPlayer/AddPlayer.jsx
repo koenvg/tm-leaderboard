@@ -42,8 +42,8 @@ export class AddPlayer extends Component{
     }
     render(){
         return (
-            <div className="row">
-                <h2 className="header">Enter your details</h2>
+            <div className="row wrapper white">
+                <h2 className="header center">Enter your details</h2>
                 { this.state.formError ?
                     <div className="card-panel red lighten-2 error-message">
                         An error occurred while submitting the form, please check if your data is correct.

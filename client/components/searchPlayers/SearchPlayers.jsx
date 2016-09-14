@@ -29,7 +29,7 @@ export class SearchPlayers extends Component{
     }
     render(){
         return (
-            <div className="leaderboard">
+            <div className="wrapper white">
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="name" type="text" className="validate" ref="name" onKeyUp={this.search.bind(this)}/>
