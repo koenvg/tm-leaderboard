@@ -3,6 +3,7 @@ This app is build with Meteor.js and react.js.
 
 ### Getting started
 `meteor npm install`
+
 `meteor`
 
 ### Features
