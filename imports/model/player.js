@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check, Match} from 'meteor/check';
+import fs from 'fs';
 
 export const Players = new Mongo.Collection('players');
 
@@ -80,5 +81,18 @@ Meteor.methods({
     'player.get'(id){
         check(id, String);
         return Players.findOne(id);
+    },
+    'downloadCsv'(){
+        let players = Players.find({}).fetch();
+        let csv = 'name;email;score';
+        players.forEach((player, i) => {
+            csv += '\n' + player.name + ';' +
+                player.email + ';' +
+                player.time;
+        });
+        return new Buffer(csv).toString('base64');
+
+
     }
+
 });
