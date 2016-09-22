@@ -14,7 +14,6 @@ export class Navigation extends Component{
                 link.href = 'data:text/csv;base64,' + res;
                 link.click();
             }
-
         });
     }
     render(){

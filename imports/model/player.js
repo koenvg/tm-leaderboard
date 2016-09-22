@@ -1,10 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check, Match} from 'meteor/check';
-import fs from 'fs';
 
 export const Players = new Mongo.Collection('players');
-
 
 if (Meteor.isServer) {
     // This code only runs on the server
@@ -91,8 +89,5 @@ Meteor.methods({
                 player.time;
         });
         return new Buffer(csv).toString('base64');
-
-
     }
-
 });
