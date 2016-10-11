@@ -36,7 +36,7 @@ export class SearchPlayers extends Component{
                         <label htmlFor="name">Search query</label>
                     </div>
                 </div>
-                <h4>Results</h4>
+                <h4 className="header">Results</h4>
                 <table>
                     <thead>
                         <tr>

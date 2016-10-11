@@ -1,9 +1,10 @@
 @import "../vendor/materialize/sass/materialize";
 
-$accent-color: #f44336;
+$accent-color: black;
 
 @import "addPlayer/addPlayer";
 @import "leaderboard/leaderboard";
+@import "navigation/navigation";
 @import "playerScore/playerScore";
 @import "searchPlayers/searchPlayers";
 
@@ -15,6 +16,7 @@ body{
 
 .header{
   color: $accent-color;
+  font-family: header;
 }
 
 .wrapper{
@@ -26,5 +28,14 @@ body{
   }
 }
 
+@font-face {
+  font-family: logo; 
+  src:
+  url("/fonts/MYRIADPRO-COND.woff"),
+}
 
-
+@font-face {
+  font-family: header; 
+  src:
+  url("/fonts/BebasNeue.otf"),
+}

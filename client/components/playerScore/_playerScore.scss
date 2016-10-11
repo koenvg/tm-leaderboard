@@ -4,16 +4,30 @@
     font-size: 1.2em;
     border-top: 1px solid color("grey", "lighten-2");
   }
+
+  ul{
+    margin-bottom: 0px;
+  }
+
+  li:nth-child(even){
+    background-color: color("grey", "lighten-3");
+  }
+
+  li:hover{
+    background-color: color("grey", "lighten-2");
+  }
   .player{
-    margin: 1rem 0 1rem 1rem;
+    padding: 1rem 0 1rem 1rem;
     font-size: 1.5rem;
     font-weight: 800;
     color: color('grey', 'darken-4');
     .badge{
       color: white;
+      margin-top: 12px;
     }
     .score{
-      font-size: 2rem;
+      font-size: 16pt;
+      font-family: logo;
       color: color('grey', 'lighten-1');
     }
   }

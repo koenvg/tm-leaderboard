@@ -1,0 +1,23 @@
+nav .brand-logo {
+  color: white;
+  font-size: 20pt;
+  margin-left: 10px;
+}
+
+nav #logo-nav {
+  width: 64px;
+}
+
+nav .nav-wrapper {
+  font-family: logo;
+  text-transform: uppercase;
+
+  a {
+    color: #d3d3d3;
+    font-size: 16pt;
+  }
+
+  a:hover {
+    color: white;
+  }
+}

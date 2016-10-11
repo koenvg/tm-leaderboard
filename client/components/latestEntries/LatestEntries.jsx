@@ -17,7 +17,7 @@ class LatestEntries extends Component{
     render(){
         return (
             <div className="leaderboard">
-                <h2 className="center"> Latest entries</h2>
+                <h3 className="center header"> Latest entries</h3>
                 <ul>
                     <FlipMove enterAnimation="elevator" leaveAnimation="elevator">
                         {this.renderPlayerScores()}

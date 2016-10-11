@@ -15,7 +15,7 @@ class Leaderboard extends Component{
     render(){
         return (
             <div className="leaderboard">
-                <h3 className="center">Top 10 Players!</h3>
+                <h3 className="center header">Top 10 Players!</h3>
                 <ul>
                     <FlipMove enterAnimation="elevator" leaveAnimation="elevator">
                             {this.renderPlayerScores()}
