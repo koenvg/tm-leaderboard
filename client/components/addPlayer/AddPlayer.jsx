@@ -24,7 +24,7 @@ export class AddPlayer extends Component{
         const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
         const time = ReactDOM.findDOMNode(this.refs.time).value.trim();
 
-        Meteor.call('players.insert', name, email, time, (error) =>{
+        Meteor.call('players.insert', name, email, time, (error) => {
             if (error) {
                 this.setState({
                     formError: true,

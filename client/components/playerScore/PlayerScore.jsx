@@ -1,57 +1,58 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
-export class PlayerScore extends Component{
-    constructor(props) {
-        super(props);
+export class PlayerScore extends Component {
+  constructor(props) {
+    super(props)
 
-        this.state = {
-            position: 'Calculating...'
-        };
+    this.state = {
+      position: 'Calculating...',
     }
-    componentWillReceiveProps(props){
-        let self = this;
-        updateScore(self, props.player.time);
-    }
-    componentDidMount(){
-        this._mounted = true;
-        let self = this;
-        updateScore(self, this.props.player.time);
+    this.updateScore.bind(this)
+  }
 
-    }
-    componentWillUnmount() {
-        this._mounted = false;
-    }
-    render(){
+  updateScore(self, time) {
+    Meteor.call('player.position', time, (error, position) => {
+      let displayedPosition = position
+      if (this._mounted) {
+        if (!error) {
+          if (position < 10) {
+            displayedPosition = `0 ${position}`
+          }
+          self.setState({
+            position: displayedPosition,
+          })
+        }
+      }
+    })
+  }
 
-        return(
-            <li>
-                <div className="player">
-                    <span className="score">{this.state.position}</span>
-                    {this.props.player.name}
-                    <span className="badge red">{this.props.player.time}</span>
-                </div>
-            </li>
+  componentWillReceiveProps(props) {
+    const self = this
+    this.updateScore(self, props.player.time)
+  }
+  componentDidMount() {
+    this._mounted = true
+    const self = this
+    this.updateScore(self, this.props.player.time)
+  }
 
-        );
-    }
+  componentWillUnmount() {
+    this._mounted = false
+  }
+  render() {
+    return (
+        <li>
+            <div className="player">
+                <span className="score">{this.state.position}</span>
+                {this.props.player.name}
+                <span className="badge red">{this.props.player.time}</span>
+            </div>
+        </li>
+
+    )
+  }
 }
 
-PlayerScore.propTypes ={
-    player: PropTypes.object.isRequired
-};
-
-function updateScore(self, time){
-    Meteor.call('player.position', time, function(error, position){
-        if(this._mounted){
-            if(error){
-            }else{
-                if(position < 10){
-                    position = '0' + position;
-                }
-                self.setState({
-                    position: position
-                })
-            }
-        }
-    }.bind(self));
+PlayerScore.propTypes = {
+  player: PropTypes.object.isRequired,
 }
