@@ -2,6 +2,7 @@
 
 $accent-color: black;
 
+@import "home/home";
 @import "addPlayer/addPlayer";
 @import "leaderboard/leaderboard";
 @import "navigation/navigation";
@@ -29,13 +30,13 @@ body{
 }
 
 @font-face {
-  font-family: logo; 
+  font-family: logo;
   src:
   url("/fonts/MYRIADPRO-COND.woff"),
 }
 
 @font-face {
-  font-family: header; 
+  font-family: header;
   src:
   url("/fonts/BebasNeue.otf"),
 }
