@@ -2,9 +2,13 @@
 This app is build with Meteor.js and react.js.
 
 ### Getting started
-`meteor npm install`
-
-`meteor`
+1. Install [meteor](https://www.meteor.com/install).
+2. Open a console and type following commands
+```
+meteor npm install
+meteor
+```
+3. Browse to [http://localhost:3000/](http://localhost:3000/)
 
 ### Features
 - Show top 10 players
