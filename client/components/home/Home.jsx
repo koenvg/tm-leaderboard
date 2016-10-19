@@ -6,7 +6,6 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        <div id="banner"></div>
         <LeaderBoardContainer/>
         <LatestEntriesContainer/>
       </div>
