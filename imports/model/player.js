@@ -22,14 +22,14 @@ if (Meteor.isServer) {
   })
 }
 
-const validEmail = Match.Where(function (email) {
+validEmail = Match.Where(function (email) {
   check(email, String)
   const emailValidationRegex =
   /(^[\w-]+(\.[\w-]+)*@([\w-]+(\.[\w-]+)*?\.[a-zA-Z]{2,}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$)/g
   return emailValidationRegex.test(email)
 })
 
-const validTimeStamp = Match.Where(function (timeStamp) {
+validTimeStamp = Match.Where(function (timeStamp) {
   check(timeStamp, String)
   const regexp = /([0-9]{2}:[0-9]{2}\.[0-9]{3})/g
   return regexp.test(timeStamp)
