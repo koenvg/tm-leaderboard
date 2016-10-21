@@ -4,4 +4,12 @@
   @extend .z-depth-5;
   background-color: color('grey', 'lighten-5');
   opacity: 0.96;
+
+  .list {
+    width: 50%;
+    margin: 0;
+    &.right {
+      border-left: 1px solid color("grey", "lighten-2");
+    }
+  }
 }
