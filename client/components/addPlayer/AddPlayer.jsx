@@ -29,7 +29,7 @@ export class AddPlayer extends Component{
                 this.setState({
                     formError: true,
                 });
-                //Materialize.toast('An error occurred while submitting the form, please check if your data is correct.', 4000)
+                // Materialize.toast('An error occurred while submitting the form, please check if your data is correct.', 4000)
             }else{
                 ReactDOM.findDOMNode(this.refs.name).value = '';
                 ReactDOM.findDOMNode(this.refs.email).value = '';
