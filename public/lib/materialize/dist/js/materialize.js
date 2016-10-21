@@ -310,6 +310,7 @@ if ($) {
 } else {
   Vel = Velocity;
 }
+Vel = jQuery.Velocity;
 ;(function ($) {
   $.fn.collapsible = function(options) {
     var defaults = {

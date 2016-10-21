@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import { jQuery } from 'jQuery'
 import  '../../../public/lib/formatter'
 
 export class AddPlayer extends Component {

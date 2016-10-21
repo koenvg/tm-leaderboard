@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import { jQuery } from 'jQuery'
 import  '../../../public/lib/formatter'
 
 export class EditPlayer extends Component {
@@ -25,6 +24,10 @@ export class EditPlayer extends Component {
         ReactDOM.findDOMNode(this.refs.email).value = player.email
         ReactDOM.findDOMNode(this.refs.time).value = player.time
         Materialize.updateTextFields()
+        $('#time').formatter({
+          pattern: '{{99}}:{{99}}.{{999}}',
+          persistent: true,
+        })
       }
     }.bind(this))
   }
