@@ -14,7 +14,7 @@ class Leaderboard extends Component {
   render() {
     return (
         <div className="leaderboard">
-            <h3 className="center header">Top 5 Players!</h3>
+            <h3 className="center header">Top 10 Players!</h3>
             <ul>
                 <FlipMove enterAnimation="elevator" leaveAnimation="elevator">
                         { this.renderPlayerScores() }
@@ -32,6 +32,6 @@ Leaderboard.propTypes = {
 export const LeaderBoardContainer = createContainer(() => {
   Meteor.subscribe('leaderboard')
   return {
-    players: Players.find({}, { sort: { time: 1 }, limit: 5 }).fetch(),
+    players: Players.find({}, { sort: { time: 1 }, limit: 10 }).fetch(),
   }
 }, Leaderboard)
