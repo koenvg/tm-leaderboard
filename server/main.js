@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor'
-// import { Players } from '../imports/model/player'
+import { Players } from '../imports/model/player'
 
 Meteor.startup(() => {
   // for (let i = 0; i < 5000; i++) {
